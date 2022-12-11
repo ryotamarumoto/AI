@@ -61,21 +61,21 @@ def iterative_plot(x_t, j):
         plt.yticks([])
         plt.imshow(x_t[i][0], cmap=plt.cm.gray)
     plt.subplots_adjust(wspace=0., hspace=0.)
-    plt.savefig("/Users/ryotamarumoto/Work/corpy/models/AE/AE5/results/{}.png".format(j))
+    plt.savefig("PATH{}.png".format(j))
     # plt.show()
 
 
 def main():
-    train_loader = return_MVTecAD_loadertrain(image_dir="/Users/ryotamarumoto/Work/corpy/archive/dataset/train/good", batch_size=256, train=True)
+    train_loader = return_MVTecAD_loadertrain(image_dir="PATH", batch_size=256, train=True)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(device)
 
     seed = 42
-    out_dir = '/Users/ryotamarumoto/Work/corpy/models/AE/AE5/logs'
+    out_dir = 'PATH'
     if not os.path.exists(out_dir):
         os.mkdir(out_dir)
-    checkpoints_dir = "/Users/ryotamarumoto/Work/corpy/models/AE/AE5/checkpoints"
+    checkpoints_dir = "PATH"
     if not os.path.exists(checkpoints_dir):
         os.mkdir(checkpoints_dir)
 
@@ -92,7 +92,7 @@ def main():
         print('epoch [{}/{}], train loss: {:.4f}'.format(epoch + 1, num_epochs, loss))
         # if (epoch + 1) % 10 == 0:
         torch.save(model.state_dict(), os.path.join(checkpoints_dir, "{}.pth".format(epoch + 1)))
-    test_loader = return_MVTecAD_loadertest(image_dir="/Users/ryotamarumoto/Work/corpy/archive/dataset/test/", batch_size=10, train=False)
+    test_loader = return_MVTecAD_loadertest(image_dir="PATH", batch_size=10, train=False)
     eval(model=model, test_loader=test_loader, device=device)
     EBM(model, test_loader, device)
 
