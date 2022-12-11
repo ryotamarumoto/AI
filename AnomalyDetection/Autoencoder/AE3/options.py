@@ -44,7 +44,7 @@ class Options():
         self.parser.add_argument('--bg_mask', type=str, default=None, help='background mask, B means black, W means white')
 
     def parse(self):
-        DATASET_PATH = '/Users/ryotamarumoto/Work/corpy/archive/dataset'
+        DATASET_PATH = 'PATH'
         self.opt = self.parser.parse_args()
 
         if not self.opt.train_data_dir:
@@ -54,11 +54,11 @@ class Options():
         if not self.opt.sub_folder:
             self.opt.sub_folder = os.listdir(self.opt.test_dir)
         if not self.opt.aug_dir:
-            self.opt.aug_dir = '/Users/ryotamarumoto/Work/corpy/models/AE/AE3/train_patches/' + self.opt.name
+            self.opt.aug_dir = 'PATH' + self.opt.name
         if not self.opt.checkpoint_dir:
-            self.opt.checkpoint_dir = '/Users/ryotamarumoto/Work/corpy/models/AE/AE3/results/' + self.opt.name + '/checkpoints/' + self.opt.loss
+            self.opt.checkpoint_dir = 'PATH' + self.opt.name + '/checkpoints/' + self.opt.loss
         if not self.opt.save_dir:
-            self.opt.save_dir = '/Users/ryotamarumoto/Work/corpy/models/AE/AE3/results/' + self.opt.name + '/reconst/ssim_l1_metric_' + self.opt.loss
+            self.opt.save_dir = 'PATH' + self.opt.name + '/reconst/ssim_l1_metric_' + self.opt.loss
 
         if not os.path.exists(self.opt.checkpoint_dir):
             os.makedirs(self.opt.checkpoint_dir)
